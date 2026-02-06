@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3xyynrptbbte"]
+
+[ext_resource type="PackedScene" uid="uid://wvbgv7hhm405" path="res://levels/world_environment.tscn" id="1_wiq57"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ii2ba"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ao76o"]
+data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_csg43"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2pqlg"]
+data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, 0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, 2.5, 0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, 0.5, 2.5, -2.5, 0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, 0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
+
+[node name="start_level" type="Node3D" unique_id=1801040742]
+
+[node name="Geometry" type="Node3D" parent="." unique_id=1321766558]
+
+[node name="Floor" type="MeshInstance3D" parent="Geometry" unique_id=1582291211]
+mesh = SubResource("BoxMesh_ii2ba")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Floor" unique_id=1930320824]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Floor/StaticBody3D" unique_id=1635196886]
+shape = SubResource("ConcavePolygonShape3D_ao76o")
+
+[node name="Box" type="MeshInstance3D" parent="Geometry" unique_id=827662657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_csg43")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Box" unique_id=2144920625]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Box/StaticBody3D" unique_id=1839992980]
+shape = SubResource("ConcavePolygonShape3D_2pqlg")
+
+[node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_wiq57")]
