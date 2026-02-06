@@ -21,3 +21,4 @@ environment = SubResource("Environment_aii23")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2109216721]
 transform = Transform3D(1, 0, 0, 0, 0.6564278, 0.75438887, 0, -0.75438887, 0.6564278, 0, 1.6180936, 0)
+shadow_enabled = true
