@@ -1,4 +1,7 @@
-extends Node
+class_name MouseCaptureComponent extends Node
+
+@export_group("Mouse Capture Settings")
+@export var debug : bool = false
 
 
 # Called when the node enters the scene tree for the first time.
