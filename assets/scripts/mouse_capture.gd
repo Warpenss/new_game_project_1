@@ -11,7 +11,7 @@ var _mouse_input : Vector2
 func _unhandled_input(event: InputEvent) -> void:
 	_capture_mouse = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	if _capture_mouse:
-		#TODO cast event as InputEventMouseMotion for autocomplition
+		event = event as InputEventMouseMotion 
 		_mouse_input.x += -event.screen_relative.x * mouse_sensitivity
 		_mouse_input.y += -event.screen_relative.y * mouse_sensitivity
 	if debug:
