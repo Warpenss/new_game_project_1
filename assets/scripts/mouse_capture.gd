@@ -22,6 +22,7 @@ func _ready() -> void:
 	#TODO fix casting 
 	#Input.mouse_mode expects enum (Input.MouseMode)
 	#Editor doesn't understand that current_mouse_mode is valid type
+	#Seems like an editor bug, Godot 4.6, 07.02.2026
 	Input.mouse_mode = current_mouse_mode
 
 func _process(delta: float) -> void:
