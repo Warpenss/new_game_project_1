@@ -5,6 +5,7 @@ class_name MouseCaptureComponent extends Node
 @export var current_mouse_mode : Input.MouseMode = Input.MOUSE_MODE_CAPTURED
 @export var mouse_sensitivity : float = 0.005
 
+
 var _capture_mouse : bool
 var _mouse_input : Vector2
 
@@ -18,7 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		print(_mouse_input)
 
 func _ready() -> void:
-	#TODO fix casting
+	#TODO fix casting 
+	#Input.mouse_mode expects enum (Input.MouseMode)
+	#Editor doesn't understand that current_mouse_mode is valid type
 	Input.mouse_mode = current_mouse_mode
 
 func _process(delta: float) -> void:
