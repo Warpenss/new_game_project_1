@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3xyynrptbbte"]
 
-[ext_resource type="PackedScene" uid="uid://wvbgv7hhm405" path="res://Scenes/WorldEnvironment.tscn" id="1_n3dct"]
-[ext_resource type="PackedScene" uid="uid://d0uylvbtmhk4" path="res://Scenes/Player.tscn" id="2_r3pqs"]
+[ext_resource type="PackedScene" uid="uid://wvbgv7hhm405" path="res://scenes/world_environment.tscn" id="1_ii2ba"]
+[ext_resource type="PackedScene" uid="uid://d0uylvbtmhk4" path="res://scenes/player.tscn" id="2_ao76o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ii2ba"]
 size = Vector3(20, 1, 20)
@@ -36,7 +36,7 @@ mesh = SubResource("BoxMesh_csg43")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Box/StaticBody3D" unique_id=1839992980]
 shape = SubResource("ConcavePolygonShape3D_2pqlg")
 
-[node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_n3dct")]
+[node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_ii2ba")]
 
-[node name="Player" parent="." unique_id=2043306033 instance=ExtResource("2_r3pqs")]
+[node name="Player" parent="." unique_id=2043306033 instance=ExtResource("2_ao76o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.6748056)
