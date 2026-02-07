@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3xyynrptbbte"]
 
-[ext_resource type="PackedScene" uid="uid://wvbgv7hhm405" path="res://scenes/world_environment.tscn" id="1_wiq57"]
+[ext_resource type="PackedScene" uid="uid://wvbgv7hhm405" path="res://Scenes/WorldEnvironment.tscn" id="1_n3dct"]
+[ext_resource type="PackedScene" uid="uid://d0uylvbtmhk4" path="res://Scenes/Player.tscn" id="2_r3pqs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ii2ba"]
 size = Vector3(20, 1, 20)
@@ -14,7 +15,7 @@ size = Vector3(5, 1, 5)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2pqlg"]
 data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, 0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, 2.5, 0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, 2.5, 2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, 0.5, 2.5, -2.5, 0.5, 2.5, 2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, 0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
 
-[node name="start_level" type="Node3D" unique_id=1801040742]
+[node name="StartLevel" type="Node3D" unique_id=1801040742]
 
 [node name="Geometry" type="Node3D" parent="." unique_id=1321766558]
 
@@ -35,4 +36,7 @@ mesh = SubResource("BoxMesh_csg43")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Box/StaticBody3D" unique_id=1839992980]
 shape = SubResource("ConcavePolygonShape3D_2pqlg")
 
-[node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_wiq57")]
+[node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_n3dct")]
+
+[node name="Player" parent="." unique_id=2043306033 instance=ExtResource("2_r3pqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.6748056)
