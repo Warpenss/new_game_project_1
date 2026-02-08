@@ -19,7 +19,6 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="CameraController" type="Node3D" parent="." unique_id=1712048603 node_paths=PackedStringArray("player_controller", "mouse_capture_component")]
 script = ExtResource("1_g2els")
-debug = true
 player_controller = NodePath("..")
 mouse_capture_component = NodePath("../Components/MouseCapture")
 
