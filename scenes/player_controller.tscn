@@ -30,4 +30,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="MouseCapture" type="Node" parent="Components" unique_id=147402652]
 script = ExtResource("1_rpqav")
-debug = true

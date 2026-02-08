@@ -23,11 +23,8 @@ func update_camera_rotation(input: Vector2) -> void:
 	
 	_rotation.z = 0.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_rotation = global_transform.basis.get_euler()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	update_camera_rotation(mouse_capture_component._mouse_input)

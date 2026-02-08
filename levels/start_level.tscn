@@ -39,4 +39,4 @@ shape = SubResource("ConcavePolygonShape3D_2pqlg")
 [node name="WorldEnvironment" parent="." unique_id=830140765 instance=ExtResource("1_ii2ba")]
 
 [node name="Player" parent="." unique_id=2043306033 instance=ExtResource("2_ao76o")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2, -4.6748056)
+transform = Transform3D(-0.6546055, 0.74271065, -0.14097027, 0.74643546, 0.66453576, 0.035021693, 0.119690776, -0.08229983, -0.9893942, 0, 4.078228, -4.6748056)
