@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://uq2v087dctoo" path="res://assets/scripts/player_controller.gd" id="1_8xumb"]
 [ext_resource type="Script" uid="uid://dx1qnlj2anu6d" path="res://assets/scripts/camera_controller.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://eghv3rjgtgs2" path="res://assets/scripts/mouse_capture.gd" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_7va2w"]
+[ext_resource type="Script" uid="uid://c1vp0ojjvaby1" path="res://addons/godot_state_charts/parallel_state.gd" id="5_ba4vk"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_ga2kn"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_lwvb4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -29,3 +33,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="MouseCapture" type="Node" parent="Components" unique_id=147402652]
 script = ExtResource("1_rpqav")
+
+[node name="StateChart" type="Node" parent="." unique_id=1795629991]
+script = ExtResource("4_7va2w")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart" unique_id=55986838]
+script = ExtResource("5_ba4vk")
+metadata/_custom_type_script = "uid://c1vp0ojjvaby1"
+
+[node name="Movement" type="Node" parent="StateChart/Root" unique_id=1343298564]
+script = ExtResource("6_ga2kn")
+initial_state = NodePath("Grounded")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Grounded" type="Node" parent="StateChart/Root/Movement" unique_id=1276002959]
+script = ExtResource("6_ga2kn")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Idle" type="Node" parent="StateChart/Root/Movement/Grounded" unique_id=1800585111]
+script = ExtResource("7_lwvb4")
+
+[node name="Moving" type="Node" parent="StateChart/Root/Movement/Grounded" unique_id=1297271501]
+script = ExtResource("6_ga2kn")
+initial_state = NodePath("Walking")
+
+[node name="Walking" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=662994962]
+script = ExtResource("7_lwvb4")
+
+[node name="Sprinting" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=924281668]
+script = ExtResource("7_lwvb4")
+
+[node name="Airborn" type="Node" parent="StateChart/Root/Movement" unique_id=1126321843]
+script = ExtResource("6_ga2kn")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
