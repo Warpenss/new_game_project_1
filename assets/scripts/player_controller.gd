@@ -1,10 +1,15 @@
 class_name PlayerController extends CharacterBody3D
 
-@export_group("Movement Settings")
 @export var debug : bool = false
+@export_group("References")
+@export var camera : CameraController
+@export var state_chart : StateChart
+@export var standing_collision : CollisionShape3D
+@export_group("Movement Settings")
 @export var speed : float = 5
 @export_range(0, 1, 0.05) var acceleration : float = 0.5
 @export_range(0, 1, 0.05) var deceleration : float = 0.5
+
 
 var _input_dir : Vector2 = Vector2.ZERO
 var _movement_velocity : Vector3 = Vector3.ZERO

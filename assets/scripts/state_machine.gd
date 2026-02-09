@@ -1,5 +1,5 @@
 class_name PlayerStateMachine extends Node
 
-@export_group("Settings")
 @export var debug : bool = false
+@export_group("References")
 @export var player_controller : PlayerController
