@@ -8,12 +8,9 @@
 [ext_resource type="Script" uid="uid://c1vp0ojjvaby1" path="res://addons/godot_state_charts/parallel_state.gd" id="5_ba4vk"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_ga2kn"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_lwvb4"]
+[ext_resource type="Script" uid="uid://2h1b43p3s5rd" path="res://assets/scripts/state_machine.gd" id="8_ba4vk"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_mfmwq"]
 [ext_resource type="Script" uid="uid://bgccklbyoht3c" path="res://assets/scripts/idle_state.gd" id="10_lwvb4"]
-[ext_resource type="Script" uid="uid://2h1b43p3s5rd" path="res://assets/scripts/state_machine.gd" id="10_mfmwq"]
-[ext_resource type="Script" uid="uid://cqbgxnrifrd1v" path="res://assets/scripts/moving_state.gd" id="12_bqnof"]
-[ext_resource type="Script" uid="uid://c05x26dh8oupf" path="res://assets/scripts/walking_state.gd" id="13_iu0n4"]
-[ext_resource type="Script" uid="uid://b0ue84684srlc" path="res://assets/scripts/sprinting_state.gd" id="14_iu0n4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -29,8 +26,8 @@ standing_collision = NodePath("CollisionShape3D")
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 414.0
-offset_bottom = 364.0
+offset_right = 143.0
+offset_bottom = 50.0
 grow_horizontal = 1
 grow_vertical = 1
 initial_node_to_watch = NodePath("../StateChart")
@@ -75,10 +72,10 @@ metadata/_custom_type_script = "uid://jk2jm1g6q853"
 [node name="Idle" type="Node" parent="StateChart/Root/Movement/Grounded" unique_id=1800585111]
 script = ExtResource("7_lwvb4")
 
-[node name="ToMoving" type="Node" parent="StateChart/Root/Movement/Grounded/Idle" unique_id=420700228]
+[node name="OnMoving" type="Node" parent="StateChart/Root/Movement/Grounded/Idle" unique_id=420700228]
 script = ExtResource("8_mfmwq")
 to = NodePath("../../Moving")
-event = &"toMoving"
+event = &"onMoving"
 delay_in_seconds = "0.0"
 
 [node name="Moving" type="Node" parent="StateChart/Root/Movement/Grounded" unique_id=1297271501]
@@ -91,31 +88,30 @@ script = ExtResource("7_lwvb4")
 [node name="Sprinting" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=924281668]
 script = ExtResource("7_lwvb4")
 
-[node name="ToIdle" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=2134585716]
+[node name="OnIdle" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=2134585716]
 script = ExtResource("8_mfmwq")
 to = NodePath("../../Idle")
-event = &"toIdle"
+event = &"onIdle"
 delay_in_seconds = "0.0"
 
-[node name="ToWalking" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=654828193]
+[node name="OnWalking" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=654828193]
 script = ExtResource("8_mfmwq")
 to = NodePath("../Walking")
-event = &"toWalking"
+event = &"onWalking"
 delay_in_seconds = "0.0"
 
-[node name="ToSprinting" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=251631069]
+[node name="OnSprinting" type="Node" parent="StateChart/Root/Movement/Grounded/Moving" unique_id=251631069]
 script = ExtResource("8_mfmwq")
 to = NodePath("../Sprinting")
-event = &"toSprinting"
+event = &"onSprinting"
 delay_in_seconds = "0.0"
 
 [node name="Airborn" type="Node" parent="StateChart/Root/Movement" unique_id=1126321843]
 script = ExtResource("6_ga2kn")
 metadata/_custom_type_script = "uid://jk2jm1g6q853"
 
-[node name="StateMachine" type="Node" parent="." unique_id=1880471032 node_paths=PackedStringArray("player_reference")]
-script = ExtResource("10_mfmwq")
-player_reference = NodePath("..")
+[node name="StateMachine" type="Node" parent="." unique_id=1880471032]
+script = ExtResource("8_ba4vk")
 
 [node name="Root" type="Node" parent="StateMachine" unique_id=448287852]
 
@@ -123,25 +119,16 @@ player_reference = NodePath("..")
 
 [node name="GroundedState" type="Node" parent="StateMachine/Root/MovementState" unique_id=280451846]
 
-[node name="IdleState" type="Node" parent="StateMachine/Root/MovementState/GroundedState" unique_id=1884702271 node_paths=PackedStringArray("player_reference")]
+[node name="IdleState" type="Node" parent="StateMachine/Root/MovementState/GroundedState" unique_id=1884702271 node_paths=PackedStringArray("player_controller_reference")]
 script = ExtResource("10_lwvb4")
-player_reference = NodePath("../../../../..")
+player_controller_reference = NodePath("../../../../..")
 
-[node name="MovingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState" unique_id=1139057554 node_paths=PackedStringArray("player_reference")]
-script = ExtResource("12_bqnof")
-player_reference = NodePath("../../../../..")
+[node name="MovingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState" unique_id=1139057554]
 
-[node name="WalkingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState/MovingState" unique_id=148149047 node_paths=PackedStringArray("player_reference")]
-script = ExtResource("13_iu0n4")
-player_reference = NodePath("../../../../../..")
+[node name="WalkingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState/MovingState" unique_id=148149047]
 
-[node name="SprintingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState/MovingState" unique_id=358270405 node_paths=PackedStringArray("player_reference")]
-script = ExtResource("14_iu0n4")
-player_reference = NodePath("../../../../../..")
+[node name="SprintingState" type="Node" parent="StateMachine/Root/MovementState/GroundedState/MovingState" unique_id=358270405]
 
 [node name="AirbornState" type="Node" parent="StateMachine/Root/MovementState" unique_id=1398467327]
 
 [connection signal="state_physics_processing" from="StateChart/Root/Movement/Grounded/Idle" to="StateMachine/Root/MovementState/GroundedState/IdleState" method="_on_idle_state_physics_processing"]
-[connection signal="state_physics_processing" from="StateChart/Root/Movement/Grounded/Moving" to="StateMachine/Root/MovementState/GroundedState/MovingState" method="_on_moving_state_physics_processing"]
-[connection signal="state_physics_processing" from="StateChart/Root/Movement/Grounded/Moving/Walking" to="StateMachine/Root/MovementState/GroundedState/MovingState/WalkingState" method="_on_walking_state_physics_processing"]
-[connection signal="state_physics_processing" from="StateChart/Root/Movement/Grounded/Moving/Sprinting" to="StateMachine/Root/MovementState/GroundedState/MovingState/SprintingState" method="_on_sprinting_state_physics_processing"]
